@@ -6,34 +6,42 @@ using namespace std;
 
 int quocient(int dividend, int divisor)
 {
-	int p = dividend, n = dividend, i, d;
+	int p, n, i = 0, d = 0;
 
-	if ((dividend > 0 && divisor > 0) || (dividend < 0 && divisor > 0))
+	if ((dividend > 0 && divisor > 0) || (dividend < 0 && divisor < 0))
 	{
-		for (i = 0; i < divisor; i++)
+		for (p = dividend; p > 0; p -= divisor)
 		{
-			p -= divisor;
+			i++;
 		}
-		return p;
+		return i;
 	}
 	else
 	{
 		if (dividend < 0)
 		{
-			for (d = 0; d < divisor; d++)
+			for (n = dividend; n < 0; n += divisor)
 			{
-				n += divisor;
+				d--;
 			}
-			return n;
+			return d;
 		}
 		else
 		{
-			for (d = 0; d > divisor; d--)
+			if (dividend == 0)
 			{
-				n += divisor;
+			    int zero = 0;
+			    return zero;
 			}
-			return n;
-		}
+			else
+			{
+			    for (n = dividend; n > 0; n += divisor)
+			    {
+				    d--;
+				}
+			    return d;
+			}
+		}   
 
 	}
 }
